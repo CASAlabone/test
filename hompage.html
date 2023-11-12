@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+ 
+</head>
+
+<body>
+    
+    <div class="wrap">
+        <div class="intro_bg">
+            
+            <div class="header">
+                <div class="searchArea">
+                    <form>
+                        <input type="search" placeholder="Search">
+                        <span>검색</span>
+                    </form>
+                </div>
+
+                <ul class="nav">
+                    <li><a href="hompage.html">HOME</a></li>
+                    <li><a href="#" onclick="openWriteDiary()">일기쓰기</a></li>
+                    <li><a href="#" >보관함</a></li>
+                    <li><a href="#">ABOUT US</a></li>
+                </ul>
+
+                
+            </div>
+                
+            <!-- Diary input section -->
+            <div id="diaryInputSection" style="display: none;">
+                <textarea id="diaryText" placeholder="당신의 이야기를 남겨주세요" maxlength="500"></textarea>
+                <button onclick="saveDiary()">저장</button>
+            </div>
+
+            <div class="introduction">당신의 일상을 최고의 기록으로.</div>
+        </div>
+    </div>
+
+    <script>
+        function openWriteDiary() {
+            // Display the diary input section
+            document.getElementById('diaryInputSection').style.display = 'block';
+        }
+
+        
+        function saveDiary(){
+            var diaryText = document.getElementById("diaryText").value;
+            
+        }
+
+        
+    </script>
+</body>
+
+</html>
