@@ -29,7 +29,7 @@
                 </div>
 
                 <ul class="nav">
-                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="hompage.html">HOME</a></li>
                     <li><a href="#" onclick="openWriteDiary()">일기쓰기</a></li>
                     <li><a href="#" >보관함</a></li>
                     <li><a href="#">ABOUT US</a></li>
@@ -41,7 +41,8 @@
             <!-- Diary input section -->
             <div id="diaryInputSection" style="display: none;">
                 <textarea id="diaryText" placeholder="당신의 이야기를 남겨주세요" maxlength="500"></textarea>
-                <button onclick="saveDiary()">저장</button>
+                <button id="save_button" onclick="showPic()">저장</button>
+                <div id="imageContainer"></div>
             </div>
 
             <div class="introduction">당신의 일상을 최고의 기록으로.</div>
@@ -49,16 +50,70 @@
     </div>
 
     <script>
+        
+
         function openWriteDiary() {
             // Display the diary input section
+            document.querySelector('.introduction').style.display = 'none';
             document.getElementById('diaryInputSection').style.display = 'block';
         }
+        function showPic() {
+            // Create a container div for the text and image
+            var container = document.createElement("div");
 
-        
-        function saveDiary(){
-            var diaryText = document.getElementById("diaryText").value;
-            
+            // Set styles for the container
+            container.style.display = "flex";
+            container.style.flexDirection = "column";
+            container.style.alignItems = "center";
+            container.style.textAlign = "center";
+
+            // Create an image element
+            var img = document.createElement("img");
+
+            // Set the source (URL) of your online image
+            img.src = "https://picsum.photos/id/237/200/300";
+
+            // Set styles for the image
+            img.style.maxWidth = "100%"; // Make sure the image doesn't exceed the container width
+
+            // Set any additional attributes if needed
+            img.alt = "Description of the image";
+
+            // Append the image to the container
+            container.appendChild(img);
+
+            // Create a paragraph element for the text
+            var text = document.createElement("p");
+            text.textContent = document.getElementById('diaryText').value;
+            document.body.appendChild(text); // Append the element to the body or another container
+            text.classList.add("large-font");
+ // Use the value from the textarea
+
+            // Set styles for the text
+            text.style.marginTop = "10px"; // Adjust the margin as needed
+
+            // Append the text to the container
+            container.appendChild(text);
+
+            // Append the container to the body or a specific element
+            document.body.appendChild(container);
+
+            // Smoothly scroll down to the newly added container
+            container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Wait for the image to load, then scroll down to it
+            img.onload = function () {
+                setTimeout(function () {
+                    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 0);
+            };
         }
+
+
+
+
+
+       
 
         
     </script>
